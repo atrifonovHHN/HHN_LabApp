@@ -1,7 +1,14 @@
+version: '3.8'  # Specify the version of Docker Compose
+
 services:
-  app:
-    build: .
+  cloud-app:  # Name of the service
+    build:
+      context: ./LabApp_Docker_Leistungsnachweis  # Path to the Dockerfile
+      dockerfile: Dockerfile  # Dockerfile name (if not named Dockerfile)
     ports:
-      - "8080:8080"
+      - "8080:8080"  # Map port 8080 on the host to port 8080 in the container
     environment:
-      - JAVA_OPTS=-Xmx512m
+      - JAVA_OPTS=-Xmx512m  # Set Java options (optional)
+    restart: unless-stopped  # Restart policy
+
+  
