@@ -1,31 +1,28 @@
-# Use an official OpenJDK 22 image as the base
+# Verwende das offizielle OpenJDK-Image
 FROM openjdk:22-jdk-slim
 
-# Set the working directory in the container
+# Setze das Arbeitsverzeichnis
 WORKDIR /app
 
-# Copy the Gradle wrapper and the build script
-COPY gradlew /app/
-COPY gradle /app/gradle
-COPY build.gradle /app/
-COPY settings.gradle /app/
+# Kopiere die gradle und gradlew-Dateien
+COPY gradlew .
+COPY gradle/ gradle/
 
-# Copy the source code
-COPY src /app/src
+# Kopiere die build.gradle und settings.gradle Dateien
+COPY LabApp_Docker_Leistungsnachweis/build.gradle.kts .
+COPY LabApp_Docker_Leistungsnachweis/settings.gradle.kts .
 
-# Grant execution rights to the Gradle wrapper
+# Kopiere den Quellcode
+COPY LabApp_Docker_Leistungsnachweis/src/ src/
+
+# Erlaube die Ausführung von gradlew
 RUN chmod +x gradlew
 
-# Build the application
-# Using --no-daemon to avoid daemon issues
-RUN ./gradlew build --no-daemon
+# Führe den Gradle-Build aus
+RUN ./gradlew build
 
-# Copy the built JAR file to the working directory
-# Ensure that the JAR file exists after the build
-COPY build/libs/*.jar /app/your-application.jar
-
-# Expose the port the application runs on
+# Gebe den Port an, auf dem die Anwendung läuft
 EXPOSE 8080
 
-# Define the command to run the application
-CMD ["java", "-jar", "your-application.jar"]
+# Definiere den Startbefehl für die Anwendung
+CMD ["java", "-jar", "build/libs/LabApp_Docker_Leistungsnachweis"]
