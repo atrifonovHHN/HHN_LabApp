@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the Gradle wrapper and the build script
 COPY gradlew /app/
 COPY gradle /app/gradle
-COPY build.gradle /app/
-COPY settings.gradle /app/
+COPY build.gradle.kts /app/  # Updated to use build.gradle.kts
+COPY settings.gradle.kts /app/  # Updated to use settings.gradle.kts
 
 # Copy the source code
 COPY src /app/src
@@ -17,11 +17,9 @@ COPY src /app/src
 RUN chmod +x gradlew
 
 # Build the application
-# Using --no-daemon to avoid daemon issues
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build
 
 # Copy the built JAR file to the working directory
-# Ensure that the JAR file exists after the build
 COPY build/libs/*.jar /app/your-application.jar
 
 # Expose the port the application runs on
