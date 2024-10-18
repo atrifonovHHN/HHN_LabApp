@@ -5,10 +5,10 @@ FROM openjdk:22-jdk-slim
 WORKDIR /app
 
 # Copy the Gradle wrapper and the build script
-COPY gradlew HHN_LabApp/app/
-COPY gradle HHN_LabApp/app//gradle
-COPY build.gradle.kts HHN_LabApp/app/app/  # Updated to use build.gradle.kts
-COPY settings.gradle.kts HHN_LabApp/app/app/  # Updated to use settings.gradle.kts
+COPY gradlew 
+COPY gradle
+COPY build.gradle.kts
+COPY settings.gradle.kts
 
 # Copy the source code
 COPY src HHN_LabApp/app/app/src
