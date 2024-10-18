@@ -22,10 +22,10 @@ RUN ./gradlew build --no-daemon
 
 # Copy the built JAR file to the working directory
 # Ensure that the JAR file exists after the build
-COPY build/libs/*.jar /app/your-application.jar
+COPY build/libs/*.jar /app/LabApp_Docker_Leistungsnachweis
 
 # Expose the port the application runs on
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["java", "-jar", "your-application.jar"]
+CMD ["java", "-jar", "LabApp_Docker_Leistungsnachweis"]
