@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy Gradle wrapper files from the specified path
 COPY app/LabApp_Docker_Leistungsnachweis/gradlew gradlew
 COPY app/LabApp_Docker_Leistungsnachweis/gradle gradle
-RUN chmod +x gradlew
+RUN chmod +x app/LabApp_Docker_Leistungsnachweis/gradlew
 
 # Copy build configuration files from the specified path
 COPY app/LabApp_Docker_Leistungsnachweis/build.gradle app/LabApp_Docker_Leistungsnachweis/settings.gradle ./
