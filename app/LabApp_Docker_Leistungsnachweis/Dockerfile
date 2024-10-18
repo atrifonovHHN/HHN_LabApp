@@ -2,7 +2,7 @@
 FROM openjdk:22-jdk-slim
 
 # Setze das Arbeitsverzeichnis
-WORKDIR /app
+WORKDIR LabApp_Docker_Leistungsnachweis
 
 # Kopiere die gradle und gradlew-Dateien
 COPY gradlew .
