@@ -5,10 +5,10 @@ FROM openjdk:22-jdk-slim
 WORKDIR /app
 
 # Copy the Gradle wrapper and the build script
-COPY gradlew 
-COPY gradle 
-COPY build.gradle 
-COPY settings.gradle
+COPY gradlew /app/
+COPY gradle /app/gradle
+COPY build.gradle /app/
+COPY settings.gradle /app/
 
 # Copy the source code
 COPY src /app/src
