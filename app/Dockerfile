@@ -17,9 +17,11 @@ COPY src /app/src
 RUN chmod +x gradlew
 
 # Build the application
-RUN ./gradlew build
+# Using --no-daemon to avoid daemon issues
+RUN ./gradlew build --no-daemon
 
 # Copy the built JAR file to the working directory
+# Ensure that the JAR file exists after the build
 COPY build/libs/*.jar /app/your-application.jar
 
 # Expose the port the application runs on
