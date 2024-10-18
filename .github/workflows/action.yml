@@ -32,17 +32,20 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
+    - name: Set executable permissions for gradlew
+      run: chmod +x app/gradlew
+
     - name: Build with Gradle
       run: cd app && ./gradlew build
 
     - name: Build Docker image
-      run: docker build -t your-application:latest .
+      run: cd app && docker build -t your-application:latest .
 
     - name: Run Docker Compose
-      run: docker-compose up -d
+      run: cd app && docker-compose up -d
 
     - name: Run tests
-      run: ./gradlew test
+      run: cd app && ./gradlew test
 
     - name: Stop Docker Compose
-      run: docker-compose down
+      run: cd app && docker-compose down
