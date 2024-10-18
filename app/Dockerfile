@@ -11,7 +11,7 @@ COPY build.gradle.kts
 COPY settings.gradle.kts
 
 # Copy the source code
-COPY src HHN_LabApp/app/app/src
+COPY src 
 
 # Grant execution rights to the Gradle wrapper
 RUN chmod +x gradlew
