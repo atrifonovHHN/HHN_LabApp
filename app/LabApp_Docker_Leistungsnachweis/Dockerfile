@@ -5,15 +5,15 @@ FROM openjdk:22-jdk-slim
 WORKDIR /app/LabApp_Docker_Leistungsnachweis
 
 # Copy the gradlew file and make it executable
-COPY LabApp_Docker_Leistungsnachweis/gradlew ./
-COPY LabApp_Docker_Leistungsnachweis/gradle/ ./gradle/
+COPY gradlew ./
+COPY gradle/ ./gradle/
 
 # Copy the build.gradle and settings.gradle files
-COPY LabApp_Docker_Leistungsnachweis/build.gradle.kts ./
-COPY LabApp_Docker_Leistungsnachweis/settings.gradle.kts ./
+COPY build.gradle.kts ./
+COPY settings.gradle.kts ./
 
 # Copy the source code
-COPY LabApp_Docker_Leistungsnachweis/src/ ./src/
+COPY src/ ./src/
 
 # Allow execution of gradlew
 RUN chmod +x gradlew
