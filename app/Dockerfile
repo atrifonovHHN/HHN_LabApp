@@ -20,7 +20,7 @@ RUN chmod +x gradlew
 RUN ./gradlew build
 
 # Copy the built JAR file to the working directory
-COPY build/libs/your-application.jar /app/your-application.jar
+COPY build/libs/*.jar /app/your-application.jar
 
 # Expose the port the application runs on
 EXPOSE 8080
