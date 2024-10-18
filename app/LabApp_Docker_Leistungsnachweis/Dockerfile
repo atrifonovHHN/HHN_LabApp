@@ -1,28 +1,28 @@
-# Verwende das offizielle OpenJDK-Image
+# Use the official OpenJDK image
 FROM openjdk:22-jdk-slim
 
-# Setze das Arbeitsverzeichnis
-WORKDIR LabApp_Docker_Leistungsnachweis
+# Set the working directory
+WORKDIR /app/LabApp_Docker_Leistungsnachweis
 
-# Kopiere die gradle und gradlew-Dateien
-COPY gradlew .
-COPY gradle/ gradle/
+# Copy the gradle and gradlew files
+COPY gradlew ./
+COPY gradle/ ./gradle/
 
-# Kopiere die build.gradle und settings.gradle Dateien
-COPY LabApp_Docker_Leistungsnachweis/build.gradle.kts .
-COPY LabApp_Docker_Leistungsnachweis/settings.gradle.kts .
+# Copy the build.gradle and settings.gradle files
+COPY build.gradle.kts ./
+COPY settings.gradle.kts ./
 
-# Kopiere den Quellcode
-COPY LabApp_Docker_Leistungsnachweis/src/ src/
+# Copy the source code
+COPY src/ ./src/
 
-# Erlaube die Ausführung von gradlew
+# Allow execution of gradlew
 RUN chmod +x gradlew
 
-# Führe den Gradle-Build aus
+# Run the Gradle build
 RUN ./gradlew build
 
-# Gebe den Port an, auf dem die Anwendung läuft
+# Specify the port on which the application will run
 EXPOSE 8080
 
-# Definiere den Startbefehl für die Anwendung
-CMD ["java", "-jar", "build/libs/LabApp_Docker_Leistungsnachweis"]
+# Define the command to start the application
+CMD ["java", "-jar", "build/libs/LabApp_Docker_Leistungsnachweis.jar"]
